@@ -1,14 +1,14 @@
-User Auth via Script and CSV - AWS CloudShell
+**User Auth via Script and CSV - AWS CloudShell**
 
 
-Introduction
+**Introduction**
 
 This Troubleshooting Guide (TSG) walks you through the process of configuring AWS authentication
 in CloudShell using an Access Key CSV and an automated script. Follow the steps carefully to avoid
 common authentication issues.
 
 
-Step 1: Create IAM User & Access Key
+**Step 1: Create IAM User & Access Key**
 
 1. Sign into the AWS Management Console.
 2. Navigate to IAM -> Users -> Create user.
@@ -19,7 +19,7 @@ If your CSV file does not contain an 'Access key ID' and 'Secret access key', yo
 downloaded the wrong file (such as an IAM login credentials CSV).
 
 
-Step 2: Upload CSV & Script to CloudShell
+**Step 2: Upload CSV & Script to CloudShell**
 
 1. Open AWS CloudShell.
 2. Click 'Actions' -> 'Upload file'.
@@ -27,24 +27,28 @@ Step 2: Upload CSV & Script to CloudShell
 4. Verify the files are present using:
  ls -la
 
-Step 3: Ensure Correct File Format (LF Instead of CRLF)
+**Step 3: Ensure Correct File Format - LF Instead of CRLF**
 
 If you created your script on Windows (e.g., in VS Code), it may have Windows-style CRLF line
 endings, which cause execution failures.
-To check for incorrect line endings, run:
+**To check for incorrect line endings, run:**
+
  cat -A (your script filename).sh
-If you see '^M' at the end of lines, convert the file to Unix format:
+ 
+**If you see '^M' at the end of lines, convert the file to Unix format:**
+
  sed -i 's/$//' (your script filename).sh
-Then verify again.
-This is actually done elsewhere now.
+ 
+**Then verify again.**
 
 
-Step 4: Make the Script Executable & Extract Credentials
 
-1. Give your script execution permissions:
+**Step 4: Make the Script Executable & Extract Credentials**
+
+**1. Give your script execution permissions:**
  chmod +x (your script filename).sh
 
-2. Open your script and ensure it contains:
+**2. Open your script and ensure it contains:**
  #!/bin/bash
  CSV_FILE="/home/cloudshell-user/(your CSV filename).csv"
  ACCESS_KEY=$(awk -F',' 'NR==2 {print $1}' "$CSV_FILE")
@@ -55,10 +59,10 @@ Step 4: Make the Script Executable & Extract Credentials
  aws configure set output "json"
  aws sts get-caller-identity
 
-3. Run the script:
+**3. Run the script:**
  ./(your script filename).sh
 
-Expected output:
+**Expected output:**
  {
  "UserId": "(your user ID)",
  "Account": "(your AWS account ID)",
@@ -70,17 +74,17 @@ InvalidClientTokenId: Credentials are incorrect.
  - Ensure the correct CSV file was used.
  - Manually check with `cat (your CSV filename).csv`.
    
-Permission Denied when running script:
+**Permission Denied when running script:**
 
  chmod +x (your script filename).sh
 
-If aws configure is still failing, delete old credentials and rerun the script:
+**If aws configure is still failing, delete old credentials and rerun the script:**
 
  rm -rf ~/.aws/credentials
  
  ./(your script filename).sh
  
-Conclusion:
+**Conclusion:**
 
 You have successfully set up AWS CLI authentication in CloudShell using an automated script and
 CSV file. This method ensures efficiency and avoids manual entry errors. Keep this guide for future
