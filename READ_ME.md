@@ -1,4 +1,4 @@
-Here we are deploying a VPC Infrastructure to AWS using Terraform and AWS CloudShell.
+rHere we are deploying a VPC Infrastructure to AWS using Terraform and AWS CloudShell.
 We will also be working inside of a custom docker image for almost the whole project in order to keep our local machine clean. (CloudShell for this instance.)
 
 
@@ -14,10 +14,34 @@ We will also be working inside of a custom docker image for almost the whole pro
 - NOTE: You will need access to your AWS “Access Key ID”, “Secret Access Key”, Region of Choice, and a preferred output format.
   Run     aws configure
 - Paste your credentials as prompted.
-- (If you obtain your keys through a .CSV file, you can use the shell script (will be added soon) called "tf-user-csvscript.sh" to authenticate to cloud shell. Ensure you open the script and change the name and file path to   one that references YOUR CSV file.)
+- (If you obtain your keys through a .CSV file, you can use the shell script (will be added soon) called "user-auth-csvscript.sh" to authenticate to cloud shell. Ensure you open the script and change the name and file path to   one that references YOUR CSV file.)
 
 
+**2.A. Using the Script: Optional**
+- Upload file into CloudShell
+- Make script executable:
 
+      chmod +x user-auth-csvscript.sh
+  
+- RUN The Script
+
+      ./user-auth-csvscript.sh
+
+- If you get an Error try:
+
+      chmod 755 tf-user-csvscript.sh
+- (Then Run again.)
+
+Successful Expected Output Should be:
+
+
+ {
+ "UserId": "(your user ID)",
+ "Account": "(your AWS account ID)",
+ "Arn": "arn:aws:iam::(your account ID):user/terraform-user"
+ }
+
+  
 **3. Upload docker_aws_terraform_tfenv.dockerfile to CloudShell.**
 
 
