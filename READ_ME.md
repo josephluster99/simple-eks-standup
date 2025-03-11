@@ -2,14 +2,14 @@ Here we are deploying a VPC Infrastructure to AWS using Terraform and AWS CloudS
 We will also be working inside of a custom docker image for almost the whole project in order to keep our local machine clean. (CloudShell for this instance.)
 
 **Infrastructure Based on This Video & Repo:**
-https://www.youtube.com/watch?v=LZssMfdJSeM
-https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbFh5WkxteEhUS3pCUE5IdVJZdGc2WUZuVm1oZ3xBQ3Jtc0tuTVk2UXVld3JNR2U4b0gwUXNiV3hxQW1MUEd2dmRNcXUzV21KejczbTB2TDU5elIyVWdkNFJGbUh5dGhxaWRSVXB0bUNEY2pGcW85TUpiMWtFdEJjc1duRU5sQUpFQ05IR0pHZHRqWDZoamQ1LXNoYw&q=https%3A%2F%2Fgithub.com%2Fopenupthecloud%2Fk8s-starter-eks-terraform%2Ftree%2Fmain&v=LZssMfdJSeM
+    https://www.youtube.com/watch?v=LZssMfdJSeM
+    https://github.com/openupthecloud/k8s-starter-eks-terraform/tree/main
 
 **Helpful Links:**
-https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest
-https://github.com/terraform-aws-modules/terraform-aws-eks
-https://gist.github.com/adenot/7f9427bef4059e4069e584466828e44e
-https://github.com/terraform-aws-modules
+    https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest
+    https://github.com/terraform-aws-modules/terraform-aws-eks
+    https://gist.github.com/adenot/7f9427bef4059e4069e584466828e44e
+    https://github.com/terraform-aws-modules
 
 
 
